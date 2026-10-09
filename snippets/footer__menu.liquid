@@ -1,0 +1,45 @@
+{% comment %}
+Required values
+menu_link: linklist
+______________
+Optional values
+linklist_class: <string>
+link_setting: <string>
+{% endcomment %}
+
+<div class="footer__menu is-justify-space-between {{ linklist_class }}">
+{% if menu_link != blank %}
+  {% assign menu = linklists[menu_link] %}
+  <div class="footerlink__heading" role="heading" aria-level="2">
+    {% if link_setting != blank %}<a href="{{ link_setting }}">{% endif %}
+      {{ menu.title }}
+    {% if link_setting != blank %}</a>{% endif %}
+  </div>
+  <ul>
+    {% for link in menu.links %}
+      <li class="footer__menu-link">
+       {% if link.url contains '#live-chat' %}
+  <button
+    type="button"
+    onclick="Chatra('openChat', true)"
+    class="{% if link.active %}is-active{% endif %} link"
+  >
+    {{ link.title }}
+  </button>
+{% else %}
+  <a
+    href="{{ link.url }}"
+    class="{% if link.active %}is-active{% endif %}"
+    {% if link.url contains 'accessibility' %}data-acsb-custom-trigger="true"{% endif %}
+  >
+    {{ link.title }}
+  </a>
+{% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <div class="footerlink__heading">{{ 'homepage.onboarding.menu_title' | t }}</div>
+  <p>{{ 'homepage.onboarding.no_content' | t }}</p>
+{% endif %}
+</div>
