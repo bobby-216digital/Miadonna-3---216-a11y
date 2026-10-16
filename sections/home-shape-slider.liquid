@@ -4,7 +4,7 @@
       <div class="title-header title-header-link">
         <!-- Linking aria-labelledby with this heading -->
         <h2 id="shape-slider-title" class="common-hd">{{ section.settings.section_title }}</h2>
-        <a href="{{ section.settings.cta_link }}" class="arrow-link" aria-label="{{ section.settings.cta_text }}">
+        <a href="{{ section.settings.cta_link }}" class="arrow-link" aria-label="{{ section.settings.cta_text | default: section.settings.section_title | escape }}">
           {{ section.settings.cta_text }}
           {% render 'icon-rightarrow' %}
         </a>
@@ -36,7 +36,7 @@
         {% for block in section.blocks %}
           {% assign even = forloop.index0 | modulo: 2 %}
           {% if even == 0 %}
-            <div class="slide" aria-label="Shapes group {{ forloop.index | divided_by: 2 | ceil }}">
+            <div class="slide" role="group" aria-label="Shapes group {{ forloop.index | divided_by: 2 | ceil }}">
           {% endif %}
 
           <div class="shape-slide-text">

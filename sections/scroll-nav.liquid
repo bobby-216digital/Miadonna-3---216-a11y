@@ -15,7 +15,7 @@
         {% for block in section.blocks %}
           <div class="slide">
             <div class="scrollnav-slide-text slide-cls sl-spacebox">
-                <a href="#{{ block.settings.section_id }}" class="aboutnav-link {% if forloop.first %}active{% endif %}">{{ block.settings.link_text }}</a>
+                <a href="#{{ block.settings.section_id }}" class="aboutnav-link {% if forloop.first %}active{% endif %}" aria-label="{{ block.settings.link_text | escape }} section">{{ block.settings.link_text }}</a>
             </div>
           </div>
         {% endfor %}

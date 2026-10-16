@@ -100,7 +100,7 @@
     {%- endcomment -%}
     {% if object.settings.display_search or header_icon_class == 'header__icons--sticky' %}
       {% comment %} Search icon {% endcomment %}
-      <a href="#searchPopup" id="header__search-icon" class="header__link action-area__link h-tooltip" aria-label="Open search" role="button" data-show-search-trigger tabindex="0">
+      <a href="#searchPopup" id="header__search-icon" class="header__link action-area__link h-tooltip" aria-label="{{ 'general.search.title' | t | escape }}" role="button" data-show-search-trigger tabindex="0">
         {% render 'icon', name: 'search', icon_class: 'header__icon' %}
         <span class="icon-caption">{{ 'general.search.title' | t | escape }}</span>
         <span class="tooltip-text" aria-hidden="true">{{ 'general.search.title' | t | escape }}</span>
@@ -144,7 +144,7 @@
       class="header-cart action-area__link {% if cart.item_count != 0 %}has-cart-count{% endif %}"
       data-ajax-cart-trigger
     >
-      <a class="header__link h-tooltip" href="{{ routes.cart_url }}" role="button" aria-label="View your shopping bag">
+      <a class="header__link h-tooltip" href="{{ routes.cart_url }}" role="button" aria-label="Bag">
         <span class="header-cart__icon">
           {% render 'icon', name: settings.cart_icon, icon_class: 'header__icon' %}
           {% comment %}

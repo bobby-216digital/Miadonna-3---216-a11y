@@ -199,7 +199,7 @@
 {%- elsif week_day == 'Wed' -%}
   {%- assign added_ship_time = 2332800 -%}
 {%- endif -%}
-{% capture 'stone_shapes' %}
+{% capture stone_shapes %}
 <!-- Shape field Starts -->
           {% assign productBundles = product.metafields.custom.bundles.value %}
                 {% if product.metafields.attributes.shapes and isRTS == 'no' %}
@@ -653,6 +653,7 @@
                       class="sustainability-select earing_pendant_product_class hide"
                       name="{{optionName}}"
                       id="{{optionName}}"
+                      aria-label="{{ option.name }}"
                       data-name-{{ option.name | replace: ' ', '_' | downcase }}=""
                       data-allow-image-convention="{% if allow_image_convention > 0 %}Yes{% else %}No{% endif %}"
                     >
@@ -806,6 +807,7 @@
                       class="sustainability-select earing_pendant_product_class hide"
                       name="{{optionName}}"
                       id="{{optionName}}"
+                      aria-label="{{ option.name }}"
                       data-check-position="{{ variant_loop_index }}"
                       data-name-{{ option.name | replace: ' ', '_' | downcase }}=""
                       data-allow-image-convention="{% if allow_image_convention > 0 %}Yes{% else %}No{% endif %}"
@@ -2274,6 +2276,7 @@
                 height="100%"
                 loading="eager"
                 id="stoneImage"
+                alt="Your stone"
               >
             </span>
           </div>

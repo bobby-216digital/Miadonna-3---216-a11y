@@ -225,12 +225,13 @@
                         {% assign collection = collections[link_handle] %}
                         {% assign first_product = collection.products.first %}
                         {% assign button_link_handle = block.settings[button_link] | remove: '/collections/' %}
+                        {%- assign button_link_title = collections[button_link_handle].title -%}
 
                         <div class="slide">
                           <div class="slide-cls">
                             <a
                               href="{{ block.settings[button_link] }}{{ urlParam }}"
-                              class="button coll-filter-boxtop{% if button_link_handle == coll_handle %} active{% endif %}" {% if button_link_handle == coll_handle %}aria-current="page"{% endif %} aria-label="{{- block.settings[button_text] -}}"
+                              class="button coll-filter-boxtop{% if button_link_handle == coll_handle %} active{% endif %}" {% if button_link_handle == coll_handle %}aria-current="page"{% endif %} aria-label="{{- block.settings[button_text] | escape -}}{% if button_link_title != blank and button_link_title != block.settings[button_text] %}, {{ button_link_title | escape }}{% endif %}"
                             >
                               {%- comment -%}
                               <span class="coll-thumbh">

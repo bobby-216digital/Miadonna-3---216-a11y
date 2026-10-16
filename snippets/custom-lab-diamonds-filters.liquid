@@ -1457,7 +1457,7 @@
                                 {%- endif -%}
                               {% endfor %}
                             {% endif %}
-                            <select class="sustainability-select" id="polish-select" multiple>
+                            <select class="sustainability-select" id="polish-select" aria-label="Polish" multiple>
                                 {% assign defaultPolish = polish_value_array.first %}
                                  {% if polishParams == blank %}
                                             {% assign polishParams = defaultPolish %}
@@ -1512,7 +1512,7 @@
                                 {%- endif -%}
                               {% endfor %}
                             {% endif %}
-                            <select class="sustainability-select" id="symmetry-select" multiple>
+                            <select class="sustainability-select" id="symmetry-select" aria-label="Symmetry" multiple>
                                 {% assign defaultSymmetry = symmetry_value_array.first %}
                                  {% if symmetryParams == blank %}
                                           {% assign symmetryParams = defaultSymmetry %}
@@ -1567,7 +1567,7 @@
                                 {%- endif -%}
                               {% endfor %}
                             {% endif %}
-                            <select class="sustainability-select" id="fluorescence-select" multiple>
+                            <select class="sustainability-select" id="fluorescence-select" aria-label="Fluorescence" multiple>
                                  {% assign defaultFluorescence = fluorescence_value_array.first %}
                               {% assign fluorIndex = 0 %}
                                 {% if fluorParams == blank %}
@@ -1623,7 +1623,7 @@
                                 {%- endif -%}
                               {% endfor %}
                             {% endif %}
-=                            <select class="sustainability-select" id="certified-by-select" multiple>
+=                            <select class="sustainability-select" id="certified-by-select" aria-label="Certified by" multiple>
                                  {% assign defaultCertifiedBy = certified_by_value_array.first %}
                                 {% if labParams == blank %}
                                     {% assign labParams = defaultCertifiedBy %}
@@ -1792,7 +1792,7 @@
             </div>
             <div class="filter-set-content">
               <div class="select-wrapper">
-                <select class="sustainability-select" id="important-select">
+                <select class="sustainability-select" id="important-select" aria-label="Quality">
                   <option value="" disabled selected>What is most important to you?</option>
                   <option value="Superior Quality" data-color-value1="F" data-color-value2="D" data-clarity-value1="VVS2" data-clarity-value2="IF" data-cut-value1="Ideal" data-cut-value2="Ideal">Superior Quality</option>
                   <option value="Biggest Diamond" data-color-value1="H" data-color-value2="G" data-clarity-value1="VS2" data-clarity-value2="VS1" data-cut-value1="Ideal" data-cut-value2="Ideal">Biggest Diamond</option>

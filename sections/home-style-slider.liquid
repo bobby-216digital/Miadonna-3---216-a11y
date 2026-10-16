@@ -5,7 +5,7 @@
         <h2 id="style-slider-title" class="common-hd">
           {{ section.settings.section_title }}
         </h2>
-        <a href="{{ section.settings.cta_link }}" class="arrow-link" aria-label="{{ section.settings.cta_text }}">
+        <a href="{{ section.settings.cta_link }}" class="arrow-link" aria-label="{{ section.settings.cta_text | default: section.settings.section_title | escape }}">
           {{ section.settings.cta_text }}
           {% render 'icon-rightarrow' %}
         </a>
@@ -57,7 +57,7 @@
                     class="style-h-show"
                     width="555"
                     height="822"
-                    alt="{{ block.settings.style_name }}"
+                    alt=""
                     loading="lazy"
                   >
                 {% endif %}

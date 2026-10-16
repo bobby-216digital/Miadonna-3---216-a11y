@@ -40,21 +40,22 @@
         <div class="complementary-products__slider" data-slider>
             {%- for product in complete_look_products limit:3 -%}
                 <div class="product-item one-fifth column medium-down--one-third small-down--one-half">
+                    {%- assign image_alt = product.featured_media.preview_image.alt | default: product.title -%}
                     <a target="_blank" href="{{ product.url | within: collection }}">
                         {% render 'image-element',
                             image: product.featured_media.preview_image,
-                            alt: product.featured_media.preview_image.alt,
+                            alt: image_alt,
                             max_height: '260'
                         %}
-                        <div class="h3">
-                            <a target="_blank" href="{{ product.url | within: collection }}">{{ product.title }}</a>
-                        </div>
-                        {% if product.tags contains 'Home Try-On' %}
-                            <p>{{ product.price_max | money_with_currency }}</p>
-                        {% else %}
-                            <p>{{ product.price_min | money_with_currency }}</p>
-                        {% endif %}
                     </a>
+                    <div class="h3">
+                        <a target="_blank" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                    </div>
+                    {% if product.tags contains 'Home Try-On' %}
+                        <p><a target="_blank" href="{{ product.url | within: collection }}">{{ product.price_max | money_with_currency }}</a></p>
+                    {% else %}
+                        <p><a target="_blank" href="{{ product.url | within: collection }}">{{ product.price_min | money_with_currency }}</a></p>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

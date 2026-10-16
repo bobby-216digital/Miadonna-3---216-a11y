@@ -1,0 +1,21 @@
+{% comment %}
+  Pause/play toggle for a looping background video.
+
+  Accepts:
+  - controls: {String} space-separated ids of the video element(s) it controls
+
+  Usage:
+  {% render 'video-toggle-button', controls: 'video-id' %}
+{% endcomment %}
+<button
+  type="button"
+  class="media-video-toggle"
+  aria-controls="{{ controls }}"
+  aria-pressed="false"
+  aria-label="Pause video"
+>
+  <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <path d="M21.54 12.0146C21.784 12.0148 21.9834 12.215 21.9834 12.459V22.54C21.9834 22.7841 21.784 22.9842 21.54 22.9844C21.2959 22.9844 21.0957 22.7842 21.0957 22.54V12.459C21.0957 12.2149 21.2959 12.0146 21.54 12.0146ZM25.2061 12.0146C25.45 12.0148 25.6494 12.215 25.6494 12.459V22.54C25.6494 22.7841 25.45 22.9842 25.2061 22.9844C24.9619 22.9844 24.7617 22.7842 24.7617 22.54V12.459C24.7617 12.2149 24.9619 12.0146 25.2061 12.0146ZM11.5332 12.0996C11.8517 11.9503 12.2263 12.001 12.4941 12.2236L17.9932 16.8057C18.199 16.9776 18.3174 17.2322 18.3174 17.5C18.3173 17.7677 18.1989 18.0215 17.9932 18.1934L12.4941 22.7754C12.2235 23.0009 11.8489 23.0488 11.5332 22.8994C11.2174 22.75 11.0146 22.4316 11.0146 22.082V12.917C11.0147 12.5674 11.2147 12.249 11.5332 12.0996ZM11.9023 22.1123L11.9258 22.0928L17.4248 17.5107L17.4375 17.5L17.4248 17.4883L11.9258 12.9062L11.9023 12.8867V22.1123Z" fill="#fff" stroke="#fff" stroke-width="0.0286406"/>
+    <circle cx="17.5" cy="17.5" r="17" stroke="#fff"/>
+  </svg>
+</button>

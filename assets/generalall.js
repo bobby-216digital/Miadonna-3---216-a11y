@@ -634,14 +634,14 @@
           var targetId = $(this).data('target');
           var $megaMenu = $(this).closest('.mega-menu__section');
 
-          $megaMenu.find('.mmright-panel').removeClass('active').attr('aria-hidden', 'true');
+          $megaMenu.find('.mmright-panel').removeClass('active').removeAttr('aria-hidden');
 
           $megaMenu.find('.left-panel-item').removeClass('active').attr('aria-selected', 'false');
 
           $megaMenu
             .find('#' + targetId)
             .addClass('active')
-            .attr('aria-hidden', 'false');
+            .removeAttr('aria-hidden');
 
           $(this).addClass('active').attr('aria-selected', 'true');
         });
@@ -667,11 +667,11 @@
         if ($('body').hasClass('dropdown-click--false')) {
           if (!$(e.target).closest('.mmdesk-content').length) {
             $('.mega-menu__section').each(function () {
-              $(this).find('.mmright-panel').removeClass('active').attr('aria-hidden', 'true');
+              $(this).find('.mmright-panel').removeClass('active').removeAttr('aria-hidden');
 
               $(this).find('.left-panel-item').removeClass('active').attr('aria-selected', 'false');
 
-              $(this).find('.mmright-panel').first().addClass('active').attr('aria-hidden', 'false');
+              $(this).find('.mmright-panel').first().addClass('active').removeAttr('aria-hidden');
               $(this).find('.left-panel-item').first().addClass('active').attr('aria-selected', 'true');
             });
           }
@@ -1150,7 +1150,7 @@
             let $section = $(this);
             let $currentActiveLeft = $section.find('.left-panel-item.active');
             let $currentActiveRight = $section.find('.mmright-panel.active');
-            $section.find('.mmright-panel').removeClass('active').attr('aria-hidden', 'true');
+            $section.find('.mmright-panel').removeClass('active').removeAttr('aria-hidden');
 
             $section.find('.left-panel-item').removeClass('active').attr('aria-selected', 'false');
 
@@ -1162,9 +1162,9 @@
 
             if ($currentActiveLeft.length && $currentActiveRight.length) {
               $currentActiveLeft.addClass('active').attr('aria-selected', 'true');
-              $currentActiveRight.addClass('active').attr('aria-hidden', 'false');
+              $currentActiveRight.addClass('active').removeAttr('aria-hidden');
             } else {
-              $section.find('.mmright-panel').first().addClass('active').attr('aria-hidden', 'false');
+              $section.find('.mmright-panel').first().addClass('active').removeAttr('aria-hidden');
 
               $section.find('.left-panel-item').first().addClass('active').attr('aria-selected', 'true');
             }
