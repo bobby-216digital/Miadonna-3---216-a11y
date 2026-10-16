@@ -213,7 +213,7 @@
 {%- elsif week_day == 'Wed' -%}
   {%- assign added_ship_time = 2332800 -%}
 {%- endif -%}
-{% capture 'stone_shapes' %}
+{% capture stone_shapes %}
 <!-- Shape field Starts -->
           {% if product.metafields.attributes.shapes and isRTS == 'no' %}
             {% assign allShapes = product.metafields.attributes.shapes | split: '|' %}
@@ -739,6 +739,7 @@
                       class="sustainability-select earing_pendant_product_class hide"
                       name="{{optionName}}"
                       id="{{optionName}}"
+                      aria-label="{{ option.name }}"
                       data-name-{{ option.name | replace: ' ', '_' | downcase }}=""
                       data-allow-image-convention="{% if allow_image_convention > 0 %}Yes{% else %}No{% endif %}"
                     >
@@ -775,6 +776,7 @@
                 class="sustainability-select earing_pendant_product_class"
                 name="{{optionName}}"
                 id="{{optionName}}"
+                aria-label="{{ option.name }}"
                 data-name-{{ option.name | replace: ' ', '_' | downcase }}=""
                 data-allow-image-convention="{% if allow_image_convention > 0 %}Yes{% else %}No{% endif %}"
                 >
@@ -897,6 +899,7 @@
                       class="sustainability-select earing_pendant_product_class hide"
                       name="{{optionName}}"
                       id="{{optionName}}"
+                      aria-label="{{ option.name }}"
                       data-name-{{ option.name | replace: ' ', '_' | downcase }}=""
                       data-check-position="{{ variant_loop_index }}"
                       data-allow-image-convention="{% if allow_image_convention > 0 %}Yes{% else %}No{% endif %}"
@@ -2545,6 +2548,7 @@
                 height="100%"
                 loading="eager"
                 id="stoneImage"
+                alt="Your stone"
               >
             </span>
           </div>
@@ -2740,8 +2744,7 @@
   attributes_center_stone_count:attributes_center_stone_count,
   isRTS: isRTS,
   attributes_basic_builder: attributes_basic_builder,
-  allow_image_convention: allow_image_convention,
-  cache_buster: now | date: '%s'
+  allow_image_convention: allow_image_convention
 %}
 {%- unless is_ring_engraving_content -%}
   <style>

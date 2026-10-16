@@ -165,7 +165,7 @@
           {% if settings.cart_action != 'mini_cart' or settings.cart_action != 'drawer' %}
             href="{{ routes.cart_url }}"
           {% endif %}
-           aria-label="View your shopping bag"
+           aria-label="{{ 'layout.general.cart' | t | escape }}"
         >
           <span class="header-cart__icon">
             {% render 'icon', name: settings.cart_icon, icon_class: 'header__icon' %}

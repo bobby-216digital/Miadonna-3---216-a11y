@@ -334,6 +334,7 @@
 
               <video
                 class="plp-banner-video-desktop"
+                id="plp-banner-1-desktop-{{ product.id }}"
                 preload="auto"
                 autoplay
                 muted
@@ -366,6 +367,7 @@
               {%- endfor -%}
               <video
                 class="plp-banner-video-mobile"
+                id="plp-banner-1-mobile-{{ product.id }}"
                 autoplay
                 muted
                 loop
@@ -384,6 +386,8 @@
               {% else %}
                 </div>
               {% endif %}
+              {%- capture video_ids -%}plp-banner-1-desktop-{{ product.id }} plp-banner-1-mobile-{{ product.id }}{%- endcapture -%}
+              {% render 'video-toggle-button', controls: video_ids %}
             {% else %}
               {%- if marketing_banner_1_link != blank -%}
                 {%- assign banner1_1x = marketing_banner_video_1 | image_url: width: 800 -%}
@@ -511,6 +515,7 @@
 
               <video
                 class="plp-banner-video-desktop"
+                id="plp-banner-2-desktop-{{ product.id }}"
                 autoplay
                 muted
                 loop
@@ -543,6 +548,7 @@
               {%- endfor -%}
               <video
                 class="plp-banner-video-mobile"
+                id="plp-banner-2-mobile-{{ product.id }}"
                 autoplay
                 muted
                 loop
@@ -561,6 +567,8 @@
               {% else %}
                 </div>
               {% endif %}
+              {%- capture video_ids -%}plp-banner-2-desktop-{{ product.id }} plp-banner-2-mobile-{{ product.id }}{%- endcapture -%}
+              {% render 'video-toggle-button', controls: video_ids %}
             {% else %}
               {% if marketing_banner_2_link != blank %}
                 {%- assign banner2_1x = marketing_banner_video_2 | image_url: width: 800 -%}

@@ -14,6 +14,7 @@
       <li class="ring-categories__item" {{ block.shopify_attributes }}>
           {% if block.settings.image != blank %}
           <div class="ring-categories__image-wrapper">
+            {%- assign image_alt = block.settings.image.alt | default: block.settings.heading -%}
             <a href="{{ link_url }}" class="ring-categories__card-link" aria-label="{{ block.settings.heading }}">
                 {{
                   block.settings.image
@@ -23,7 +24,7 @@
                     loading: 'lazy',
                     width: block.settings.image.width,
                     height: block.settings.image.height,
-                    alt: block.settings.image.alt | default: block.settings.heading | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx
+                    alt: image_alt | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx
                 }}
               </a>
           </div>

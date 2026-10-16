@@ -210,7 +210,7 @@
                     ></iframe>
 
                   {% elsif video_url != blank %}
-                    <video preload="none"  autoplay muted loop playsinline {% if main_image != blank %}poster="{{ settings.speedsize_url_pfx_https -}}{{ main_image | image_url: width: 800 }}"{% endif %} data-video-src="{{ video_url | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}">
+                    <video id="grid-video-{{ block.id }}" preload="none"  autoplay muted loop playsinline {% if main_image != blank %}poster="{{ settings.speedsize_url_pfx_https -}}{{ main_image | image_url: width: 800 }}"{% endif %} data-video-src="{{ video_url | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}">
                       {% comment %} <source src="{{ video_url | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}" type="video/mp4"> {% endcomment %}
                       
                     </video>
@@ -254,7 +254,7 @@
                     ></iframe>
 
                   {% elsif mobile_video_url != blank %}
-                    <video preload="none"  autoplay muted loop playsinline {% if mobile_image != blank %}poster="{{ settings.speedsize_url_pfx_https -}}{{ mobile_image | image_url: width: 800 }}"{% endif %} data-video-src="{{ mobile_video_url | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}">
+                    <video id="grid-video-mobile-{{ block.id }}" preload="none"  autoplay muted loop playsinline {% if mobile_image != blank %}poster="{{ settings.speedsize_url_pfx_https -}}{{ mobile_image | image_url: width: 800 }}"{% endif %} data-video-src="{{ mobile_video_url | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}">
                       <source src="{{ mobile_video_url | replace: settings.speedsize_shopify_cdn_url, settings.speedsize_url_pfx_shopify_cdn | replace: settings.speedsize_shop_domain_cdn, settings.speedsize_url_pfx_shop_domain_cdn | replace: settings.speedsize_duplicated_https_search, settings.speedsize_duplicated_https_replacement | replace: settings.speedsize_url_pfx_duplicated, settings.speedsize_url_pfx }}" type="video/mp4">
                       
                     </video>
@@ -283,6 +283,22 @@
               {% if block.settings.link != blank %}
                 </a>
               {% endif %}
+              {%- liquid
+                assign video_ids = ''
+                unless video_url contains 'youtube.com' or video_url contains 'youtu.be' or video_url contains 'vimeo.com'
+                  if video_url != blank
+                    assign video_ids = 'grid-video-' | append: block.id
+                  endif
+                endunless
+                unless mobile_video_url contains 'youtube.com' or mobile_video_url contains 'youtu.be' or mobile_video_url contains 'vimeo.com'
+                  if mobile_video_url != blank
+                    assign video_ids = video_ids | append: ' grid-video-mobile-' | append: block.id | strip
+                  endif
+                endunless
+              -%}
+              {%- if video_ids != blank -%}
+                {% render 'video-toggle-button', controls: video_ids %}
+              {%- endif -%}
             </figure>
 
         </div>

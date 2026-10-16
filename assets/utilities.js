@@ -2884,6 +2884,26 @@ function reloadGallerySlider() {
   }
 }
 
+// Pause/play toggle for looping background videos (snippets/video-toggle-button).
+document.addEventListener("click", function (e) {
+  const button = e.target.closest(".media-video-toggle");
+  if (!button) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const pause = button.getAttribute("aria-pressed") !== "true";
+  (button.getAttribute("aria-controls") || "").split(" ").forEach(function (id) {
+    const video = id && document.getElementById(id);
+    if (!video) return;
+    if (pause) {
+      video.pause();
+    } else {
+      video.play().catch(function () {});
+    }
+  });
+  button.setAttribute("aria-pressed", pause ? "true" : "false");
+  button.classList.toggle("is-paused", pause);
+});
+
 // Enter/Space activation for theme controls that are rendered as
 // role="button" elements rather than native buttons.
 document.addEventListener("keydown", function (e) {
@@ -2896,8 +2916,19 @@ document.addEventListener("keydown", function (e) {
     ".filter__list-label",
     ".ajax-cart__close-icon",
     '.swatch[role="button"]',
-    '.shape-item[role="button"]'
+    '.shape-item[role="button"]',
+    '.video-buttons .icon[role="button"]'
   ].join(","))) return;
   e.preventDefault();
-  el.click();
+  if (typeof el.click === "function") {
+    el.click();
+  } else {
+    el.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  }
+  // Play/pause icons swap visibility, so keep focus on whichever one is shown.
+  if (el.closest(".video-buttons") && !el.getClientRects().length) {
+    const visible = Array.from(el.parentElement.querySelectorAll('.icon[role="button"]'))
+      .find((icon) => icon !== el && icon.getClientRects().length);
+    visible && visible.focus();
+  }
 });

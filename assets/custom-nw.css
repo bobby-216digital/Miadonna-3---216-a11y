@@ -922,3 +922,9 @@ body .product-app .mage-product-points-calculator__badge .mage-product-points-ca
 #okendo-product-reviews .oke-w-breakdownModule-distribution-bar, .oke-w-breakdownModule-distribution-bar {grid-column: 2 !important;  grid-row: auto !important; width: 100% !important;}
 #okendo-product-reviews .oke-w-breakdownModule-distribution-count, .oke-w-breakdownModule-distribution-count {grid-column: 3 !important; grid-row: auto !important; text-align: right !important;}
 #okendo-product-reviews .oke-w-breakdownModule-distribution-highlight, .oke-w-breakdownModule-distribution-highlight {grid-column: 1 / -1 !important;}
+.button:focus-visible{outline:2px solid #001514; outline-offset:2px;}
+.media-video-toggle{position:absolute; right:20px; bottom:20px; z-index:5; padding:0; background:rgba(0,0,0,.55); border:none; border-radius:50%; cursor:pointer; line-height:0;}
+.media-video-toggle.is-paused svg{opacity:.7;}
+.media-video-toggle:focus-visible{outline:2px solid #001514; outline-offset:2px; box-shadow:0 0 0 2px #fff;}
+:where(figure, .list-bnrbox):has(> .media-video-toggle){position:relative;}
+.list-bnrbox > .media-video-toggle{top:20px; bottom:auto;}

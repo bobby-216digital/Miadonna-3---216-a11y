@@ -699,6 +699,7 @@
     border:solid 1px transparent;
     color:#1c1b19;
 }
+.filter-values-bar.filter-values-section .faceted-active-filters .button:focus-visible{outline:2px solid #001514 !important; outline-offset:2px;}
 .filter-values-bar.filter-values-section .faceted-active-filters .button:last-child{background-color:#fff!important; color:#000;}
 .filter-values-bar.filter-values-section .faceted-active-filters .button .clear-filter svg path{fill:currentColor;}
 .filter-values-bar.filter-values-section .faceted-active-filters .button:hover{background-color:#fff; border-color:#000; color:#000;}
@@ -2048,7 +2049,8 @@ body .container--pagination .paginate .button.is-loading::after{width:28px; heig
   cursor: pointer;
 }
 
-.filter__sidebar-content section .filter__list-title h3 {
+.filter__sidebar-content section .filter__list-title h3,
+.filter__sidebar-content section .filter__list-title .h3 {
   color: #1c1b19;
   font-size: 18px;
   font-weight: 400;
@@ -2059,7 +2061,8 @@ body .container--pagination .paginate .button.is-loading::after{width:28px; heig
   font-style:normal;
 }
 
-.filter__sidebar-content section .filter__list-title h3 span {
+.filter__sidebar-content section .filter__list-title h3 span,
+.filter__sidebar-content section .filter__list-title .h3 span {
   color: rgba(192, 192, 192, 1);
 }
 
@@ -2103,7 +2106,11 @@ body .container--pagination .paginate .button.is-loading::after{width:28px; heig
 .filter-values-section
   .faceted-filter-group-display__list
   .faceted-filter-group-display__list-item
-  label {
+  label,
+.filter-values-section
+  .faceted-filter-group-display__list
+  .faceted-filter-group-display__list-item
+  span.faceted-filter-group-display__list-item-label {
   min-width: 108px;
   min-height: 108px;
   display: flex;
@@ -2423,7 +2430,8 @@ body .container--pagination .paginate .button.is-loading::after{width:28px; heig
     letter-spacing: 0.03em;
   }
 
-  .filter__sidebar-content section .filter__list-title h3 {
+  .filter__sidebar-content section .filter__list-title h3,
+  .filter__sidebar-content section .filter__list-title .h3 {
     font-size: 18px;
     font-weight: 400;
     line-height: 65px;
